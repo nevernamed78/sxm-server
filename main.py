@@ -60,12 +60,12 @@ def login():
     return response.json().get('claims_token').get('value')
 
 
-def version_control(token: str):
+def version_control(token: str, uuid4: str):
     response = SESSION.post(
         url="https://mcare.siriusxm.ca/services/DealerAppService7/VersionControl",
         headers={
             "Accept": "*/*",
-            "X-Kony-ReportingParams": '{"os":"16.1.1","dm":"unknown","did":"90f77dac-5aaf-4872-b7c4-e05dbae69e88",'
+            "X-Kony-ReportingParams": '{"os":"16.1.1","dm":"unknown","did":uuid4,'
                                       '"ua":"iPhone","aid":"DealerApp","aname":"SXM Dealer","chnl":"mobile",'
                                       '"plat":"ios","aver":"2.4.0","atype":"native","stype":"b2c","kuid":"",'
                                       '"mfaid":"3de259b8-e39b-4f60-b2ba-ae3d4a2655bf",'
@@ -73,7 +73,7 @@ def version_control(token: str):
                                       '"sdkversion":"8.4.134","sdktype":"js","fid":"frmHome","sessiontype":"I",'
                                       '"rsid":"1668318090440-ac27-f025-7685","svcid":"VersionControl"}',
             "X-Kony-API-Version": "1.0",
-            "X-Kony-DeviceId": "90f77dac-5aaf-4872-b7c4-e05dbae69e88",
+            "X-Kony-DeviceId": uuid4,
             "Accept-Language": "en-US,en;q=0.9",
             "Accept-Encoding": "gzip, deflate",
             "Content-Type": "application/x-www-form-urlencoded",
@@ -263,7 +263,7 @@ def process(device_id: str):
     appconfig()
     auth_token = login()
     uuid4 = str(uuid.uuid4())
-    version_control(auth_token)
+    version_control(auth_token, uuid4)
     get_properties(auth_token, uuid4)
     response = update_device_sat_refresh_with_priority(device_id, auth_token, uuid4)
     seq = int(response.get('seqValue'))
