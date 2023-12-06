@@ -7,7 +7,6 @@
 @media only screen and (max-device-width: 1024px) {
   div.box,
     div.info {
-    height: 100vh;
     width: 100%
   }
 }
@@ -57,8 +56,8 @@ button {
   margin-top: 15px;
   margin-bottom: 15px;
   display: block;
-  height: 25px;
-  width: 157px;
+  height: 40px;
+  width: 150px;
   border-radius: 9999px;
   border-color: transparent;
   --tw-bg-opacity: 1;

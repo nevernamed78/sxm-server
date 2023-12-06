@@ -24,7 +24,7 @@
     @apply block w-[150px] h-[25px] text-center mx-auto my-[15px] rounded-full border border-black;
   }
   button {
-    @apply block w-[157px] h-[25px] mx-auto my-[15px] rounded-full bg-green-500 hover:bg-green-600 focus:bg-green-600 border-transparent text-white font-bold;
+    @apply block w-[150px] h-[40px] mx-auto my-[15px] rounded-full bg-green-500 hover:bg-green-600 focus:bg-green-600 border-transparent text-white font-bold;
   }
   div#info.info.show {
     @apply mt-3;
